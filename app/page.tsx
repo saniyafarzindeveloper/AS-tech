@@ -1,8 +1,9 @@
+import Hero from "@/components/landing-page/Hero";
 
 export default function Home() {
   return (
-    <div className="text-cyan-800">
-      Hello
+    <div className="">
+    <Hero />
     </div>
   );
 }
