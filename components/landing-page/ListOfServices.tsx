@@ -4,10 +4,9 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 const services = [
-  ["UI/UX", "Development", "Deployment"],
-  ["SEO", "Performance", "Scalability"],
-  ["Databases", "Automation", "Security"],
-  ["Branding", "AI Integration", "Custom CMS"],
+  ["UI/UX", "Development","Scalability" ],
+  ["SEO", "Performance","Deployment" ],
+  
 ];
 
 export default function ListOfServices() {
@@ -72,7 +71,7 @@ export default function ListOfServices() {
                           to-[#38BDF8]
                           bg-clip-text
                           text-transparent
-                          font-black
+                          font-normal
                         `
                         : `
                           text-white/90
