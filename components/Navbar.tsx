@@ -1,53 +1,93 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu } from "lucide-react";
-import { motion } from "framer-motion";
+import { Menu, ArrowUpRight } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-const navItems = [
-  "Home",
-  "About",
-  "Services",
-  "Projects",
-  "Contact",
-];
+export function Navbar() {
+  const navLinks = [
+    { label: "SERVICES", href: "/services" },
+    { label: "PROJECTS", href: "/projects" },
+    { label: "ABOUT", href: "/about" },
+  ];
 
-export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <motion.nav
-      initial={{ y: -40, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 z-50 w-full"
-    >
-      <div className="absolute inset-0 bg-transparent" />
+    <header
+      className={`
+        fixed
+        top-0
+        z-50
+        w-full
+        transition-all
+        duration-300
 
-      <div className="relative mx-auto flex h-[92px] w-full items-center justify-between px-6 md:px-12">
-        {/* LEFT */}
-        <div className="flex items-center gap-3">
-          {/* logo */}
-          <div className="relative h-20 w-20 overflow-hidden rounded-xl">
+        ${
+          scrolled
+            ? `
+              border-b
+              border-white/10
+              bg-[#020817]/80
+              backdrop-blur-xl
+            `
+            : `
+              bg-transparent
+            `
+        }
+      `}
+    >
+      <div
+        className="
+          mx-auto
+          flex
+          h-[92px]
+          max-w-7xl
+          items-center
+          justify-between
+          px-6
+          md:px-10
+        "
+      >
+        {/* LOGO */}
+        <Link
+          href="/"
+          className="flex items-center gap-3"
+        >
+          {/* logo image */}
+          <div className="relative h-16 w-16 overflow-hidden rounded-xl">
             <Image
               src="/bg.png"
               alt="logo"
               fill
-              className="object-contain"
               priority
+              className="object-contain"
             />
           </div>
 
-          {/* text */}
+          {/* brand */}
           <div className="flex flex-col leading-none">
             <span
               className="
-                text-[25px]
+                text-[24px]
                 tracking-tight
                 bg-gradient-to-r
                 from-[#bf4078]
@@ -64,8 +104,7 @@ export default function Navbar() {
             <span
               className="
                 mt-1
-                text-[14px]
-                font-medium
+                text-[13px]
                 uppercase
                 tracking-[0.35em]
                 text-white
@@ -74,258 +113,174 @@ export default function Navbar() {
               Studio
             </span>
           </div>
-        </div>
+        </Link>
 
-        {/* RIGHT */}
-        <div className="flex items-center gap-4">
-          {/* CTA */}
-          <motion.button
-            whileHover={{
-              scale: 1.03,
-              borderColor: "rgba(139,92,246,0.5)",
-            }}
-            whileTap={{ scale: 0.97 }}
-            className="
-              hidden
-              md:block
-              group
-              relative
-              overflow-hidden
-              rounded-full
-              border
-              border-white/15
-              bg-white/[0.03]
-              px-8
-              py-4
-              backdrop-blur-md
-            "
-          >
-            <div
+        {/* DESKTOP MENU */}
+        <nav
+          className="
+            hidden
+            items-center
+            gap-10
+            lg:flex
+          "
+        >
+          {navLinks.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
               className="
-                absolute
-                inset-0
-                bg-gradient-to-r
-                from-[#8B5CF6]/10
-                via-[#06B6D4]/10
-                to-[#EC4899]/10
-                opacity-0
-                transition-opacity
-                duration-500
-                group-hover:opacity-100
-              "
-            />
-
-            <span
-              className="
-                relative
                 text-sm
-                font-bold
-                uppercase
-                tracking-[0.25em]
-                text-white
+                tracking-[0.2em]
+                text-white/75
+                transition-colors
+                duration-300
+                hover:text-white
               "
             >
-              Say Hello
-            </span>
-          </motion.button>
+              {item.label}
+            </Link>
+          ))}
 
-          {/* SHEET MENU */}
+          {/* CTA */}
+          <Button
+            asChild
+            className="
+              group
+              rounded-full
+              border
+              border-white/10
+              bg-white/[0.05]
+              px-6
+              py-6
+              text-white
+              backdrop-blur-md
+              transition-all
+              duration-300
+              hover:border-[#8B5CF6]/40
+              hover:bg-white/[0.08]
+            "
+          >
+            <Link
+              href="/contact"
+              className="flex items-center gap-2"
+            >
+              CONTACT
+
+              <ArrowUpRight
+                size={18}
+                className="
+                  transition-transform
+                  duration-300
+                  group-hover:translate-x-1
+                  group-hover:-translate-y-1
+                "
+              />
+            </Link>
+          </Button>
+        </nav>
+
+        {/* MOBILE MENU */}
+        <div className="lg:hidden">
           <Sheet>
             <SheetTrigger asChild>
-              <motion.button
-                whileHover={{
-                  rotate: 90,
-                  borderColor: "rgba(139,92,246,0.5)",
-                }}
-                transition={{ duration: 0.25 }}
+              <button
                 className="
                   flex
-                  h-[68px]
-                  w-[68px]
+                  h-12
+                  w-12
                   items-center
                   justify-center
                   rounded-full
                   border
-                  border-white/15
-                  bg-white/[0.03]
+                  border-white/10
+                  bg-white/[0.04]
                   text-white
                   backdrop-blur-md
                 "
               >
-                <Menu size={26} strokeWidth={1.5} />
-              </motion.button>
+                <Menu size={24} />
+              </button>
             </SheetTrigger>
 
             <SheetContent
-  side="right"
-  className="
-    w-full
-    border-l
-    border-white/10
-    bg-[#020817]/95
-    p-0
-    text-white
-    backdrop-blur-2xl
-    sm:w-[520px]
-
-    [&>button]:hidden
-  "
->
-  {/* background glow */}
-  <div
-    className="
-      absolute
-      inset-0
-      bg-[radial-gradient(circle_at_top_right,rgba(139,92,246,0.22),transparent_45%)]
-    "
-  />
-
-  {/* gradient line */}
-  <div
-    className="
-      absolute
-      left-0
-      top-0
-      h-full
-      w-px
-      bg-gradient-to-b
-      from-[#8B5CF6]
-      via-[#C026D3]
-      to-transparent
-      opacity-60
-    "
-  />
-
-  <div
-    className="
-      relative
-      z-10
-      flex
-      h-full
-      flex-col
-      justify-between
-      px-8
-      py-24
-      sm:px-14
-    "
-  >
-    {/* TOP */}
-    <div>
-      {/* small label */}
-      <p
-        className="
-          mb-10
-          text-xs
-          uppercase
-          tracking-[0.35em]
-          text-white/35
-        "
-      >
-        Navigation
-      </p>
-
-      {/* nav items */}
-      <div className="space-y-7">
-        {navItems.map((item, index) => (
-          <motion.div
-            key={item}
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{
-              delay: index * 0.08,
-            }}
-          >
-            <Link
-              href="/"
+              side="right"
               className="
-                group
-                flex
-                items-center
-                justify-between
-                overflow-hidden
+                border-l
+                border-white/10
+                bg-[#020817]/95
+                text-white
+                backdrop-blur-2xl
               "
             >
-              <span
+              {/* glow */}
+              <div
                 className="
-                  text-4xl
-                  font-extralight
-                  tracking-[-0.05em]
-                  text-white/80
-                  transition-all
-                  duration-300
-                  group-hover:translate-x-2
-                  group-hover:text-white
-                  md:text-5xl
+                  pointer-events-none
+                  absolute
+                  inset-0
+                  bg-[radial-gradient(circle_at_top_right,rgba(139,92,246,0.18),transparent_45%)]
+                "
+              />
+
+              <div
+                className="
+                  relative
+                  mt-20
+                  flex
+                  flex-col
+                  gap-8
                 "
               >
-                {item}
-              </span>
+                {navLinks.map((item) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className="
+                      text-3xl
+                      font-extralight
+                      tracking-[-0.04em]
+                      text-white/85
+                      transition-colors
+                      duration-300
+                      hover:text-white
+                    "
+                  >
+                    {item.label}
+                  </Link>
+                ))}
 
-              <span
-                className="
-                  translate-x-[-20px]
-                  opacity-0
-                  text-xl
-                  transition-all
-                  duration-300
-                  group-hover:translate-x-0
-                  group-hover:opacity-100
-                "
-              >
-                →
-              </span>
-            </Link>
+                {/* mobile CTA */}
+                <Button
+                  asChild
+                  className="
+                    mt-6
+                    w-fit
+                    rounded-full
+                    border
+                    border-white/10
+                    bg-white/[0.05]
+                    px-6
+                    py-6
+                    text-white
+                    backdrop-blur-md
+                    hover:border-[#8B5CF6]/40
+                    hover:bg-white/[0.08]
+                  "
+                >
+                  <Link
+                    href="/contact"
+                    className="flex items-center gap-2"
+                  >
+                    CONTACT
 
-            {/* animated divider */}
-            <div
-              className="
-                mt-4
-                h-px
-                w-0
-                bg-gradient-to-r
-                from-[#8B5CF6]
-                via-[#C026D3]
-                to-[#38BDF8]
-                transition-all
-                duration-500
-                group-hover:w-full
-              "
-            />
-          </motion.div>
-        ))}
-      </div>
-    </div>
-
-    {/* BOTTOM */}
-    <div className="space-y-8">
-     
-
-      {/* contact */}
-      <div className="space-y-2">
-       
-
-        <p className="text-lg text-white/80">
-          hello@astech.com
-        </p>
-      </div>
-
-      {/* glow line */}
-      <div
-        className="
-          h-px
-          w-full
-          bg-gradient-to-r
-          from-[#8B5CF6]
-          via-[#C026D3]
-          to-transparent
-        "
-      />
-    </div>
-  </div>
-</SheetContent>
+                    <ArrowUpRight size={18} />
+                  </Link>
+                </Button>
+              </div>
+            </SheetContent>
           </Sheet>
         </div>
       </div>
-    </motion.nav>
+    </header>
   );
 }
