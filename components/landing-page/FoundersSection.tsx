@@ -9,24 +9,30 @@ const founders = [
     initials: "SF",
     name: "Saniya Farzin",
     role: "CTO & Co-Founder",
-    domain: ["Web Apps", "SaaS Architecture", "FullStack Engineering", "System Design"],
+    domain: [
+      "Web Apps",
+      "SaaS Architecture",
+      "FullStack Engineering",
+      "System Design",
+    ],
     qualification: "B.E. Information Technology",
     experience: "3+ Years",
     statement:
       "Passionate about building scalable web applications, SaaS products, modern user experiences and future-ready digital ecosystems.",
     linkedin: "https://www.linkedin.com/in/saniya-farzin/",
+    cardUrl: "https://blinq.me/cmp9isqvf01ip0bs636yz7rsr?bs=db",
   },
   {
-    initials: "AA",
-    name: "Aves Ahmed",
+    initials: "IS",
+    name: "Iftikhar Shaikh",
     role: "Business Development Manager",
     domain: ["Construction", "Engineering", "Management", "Finance"],
     qualification: "MTech, MBA",
     experience: "7+ Years",
     statement:
       "Focused on client success, partnerships, business growth and transforming ideas into sustainable digital ventures.",
-    linkedin:
-      "https://www.linkedin.com/in/aves-shaikh-project-management/",
+    linkedin: "",
+    cardUrl: "",
   },
 ];
 
@@ -90,7 +96,6 @@ export default function FoundersSection() {
             "
           >
             Meet the
-
             <span
               className="
                 bg-gradient-to-r
@@ -117,9 +122,8 @@ export default function FoundersSection() {
               text-white/55
             "
           >
-            The minds behind A S Tech Studio, combining technology,
-            innovation and business strategy to deliver complete digital
-            solutions.
+            The minds behind A S Tech Studio, combining technology, innovation
+            and business strategy to deliver complete digital solutions.
           </p>
         </motion.div>
 
@@ -240,33 +244,33 @@ export default function FoundersSection() {
                   </p>
 
                   {/* details */}
-                {/* details */}
-<div
-  className="
+
+                  <div
+                    className="
     mt-8
     grid
     gap-8
     md:grid-cols-3
   "
->
-  {/* DOMAIN */}
-  <div>
-    <p
-      className="
+                  >
+                    {/* DOMAIN */}
+                    <div>
+                      <p
+                        className="
         text-xs
         uppercase
         tracking-[0.2em]
         text-white/30
       "
-    >
-      Domain
-    </p>
+                      >
+                        Domain
+                      </p>
 
-    <div className="mt-3 flex flex-wrap gap-2">
-      {founder.domain.map((item) => (
-        <span
-          key={item}
-          className="
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {founder.domain.map((item) => (
+                          <span
+                            key={item}
+                            className="
             rounded-full
             border
             border-white/10
@@ -276,59 +280,59 @@ export default function FoundersSection() {
             text-xs
             text-white/70
           "
-        >
-          {item}
-        </span>
-      ))}
-    </div>
-  </div>
+                          >
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
 
-  {/* EXPERIENCE */}
-  <div>
-    <p
-      className="
+                    {/* EXPERIENCE */}
+                    <div>
+                      <p
+                        className="
         text-xs
         uppercase
         tracking-[0.2em]
         text-white/30
       "
-    >
-      Experience
-    </p>
+                      >
+                        Experience
+                      </p>
 
-    <p
-      className="
+                      <p
+                        className="
         mt-3
         text-white/70
       "
-    >
-      {founder.experience}
-    </p>
-  </div>
+                      >
+                        {founder.experience}
+                      </p>
+                    </div>
 
-  {/* QUALIFICATION */}
-  <div>
-    <p
-      className="
+                    {/* QUALIFICATION */}
+                    <div>
+                      <p
+                        className="
         text-xs
         uppercase
         tracking-[0.2em]
         text-white/30
       "
-    >
-      Qualification
-    </p>
+                      >
+                        Qualification
+                      </p>
 
-    <p
-      className="
+                      <p
+                        className="
         mt-3
         text-white/70
       "
-    >
-      {founder.qualification}
-    </p>
-  </div>
-</div>
+                      >
+                        {founder.qualification}
+                      </p>
+                    </div>
+                  </div>
 
                   {/* statement */}
                   <p
@@ -341,44 +345,85 @@ export default function FoundersSection() {
                     {founder.statement}
                   </p>
 
-                  {/* linkedin */}
-                  <Link
-                    href={founder.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="
-                      mt-8
-                      inline-flex
-                      items-center
-                      gap-3
-                      rounded-full
-                      border
-                      border-white/10
-                      bg-white/[0.03]
-                      px-5
-                      py-3
-                      text-sm
-                      uppercase
-                      tracking-[0.15em]
-                      text-white
-                      transition-all
-                      duration-300
-                      hover:border-[#8B5CF6]/40
-                      hover:bg-white/[0.06]
-                    "
-                  >
-                    Connect With Me
-
-                    <ArrowUpRight
-                      size={16}
+                  {/* actions */}
+                  <div className="mt-8 flex flex-wrap gap-3">
+                    {/* LinkedIn */}
+                    <Link
+                      href={founder.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="
-                        transition-transform
-                        duration-300
-                        group-hover:translate-x-1
-                        group-hover:-translate-y-1
-                      "
-                    />
-                  </Link>
+      inline-flex
+      items-center
+      gap-3
+      rounded-full
+      border
+      border-white/10
+      bg-white/[0.03]
+      px-5
+      py-3
+      text-sm
+      uppercase
+      tracking-[0.15em]
+      text-white
+      transition-all
+      duration-300
+      hover:border-[#8B5CF6]/40
+      hover:bg-white/[0.06]
+    "
+                    >
+                      Connect with me
+                      <ArrowUpRight
+                        size={16}
+                        className="
+        transition-transform
+        duration-300
+        hover:translate-x-1
+        hover:-translate-y-1
+      "
+                      />
+                    </Link>
+
+                    {/* Digital Card */}
+                    <Link
+                    target="_blank"
+                      rel="noopener noreferrer"
+                      href={founder.cardUrl}
+                      className="
+      inline-flex
+      items-center
+      gap-3
+      rounded-full
+      border
+      border-[#8B5CF6]/20
+      bg-gradient-to-r
+      from-[#8B5CF6]/10
+      via-[#C026D3]/10
+      to-[#38BDF8]/10
+      px-5
+      py-3
+      text-sm
+      uppercase
+      tracking-[0.15em]
+      text-white
+      transition-all
+      duration-300
+      hover:border-[#8B5CF6]/50
+      hover:shadow-[0_0_20px_rgba(168,85,247,0.25)]
+    "
+                    >
+                      Digital Card
+                      <ArrowUpRight
+                        size={16}
+                        className="
+        transition-transform
+        duration-300
+        hover:translate-x-1
+        hover:-translate-y-1
+      "
+                      />
+                    </Link>
+                  </div>
                 </div>
               </div>
 
