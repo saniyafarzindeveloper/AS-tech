@@ -6,17 +6,13 @@ import Link from "next/link";
 import { Menu, ArrowUpRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export function Navbar() {
   const navLinks = [
-    { label: "SERVICES", href: "/services" },
-    { label: "PROJECTS", href: "/projects" },
-    { label: "ABOUT", href: "/about" },
+    { label: "SERVICES", href: "/" },
+    { label: "PROJECTS", href: "/" },
+    { label: "ABOUT", href: "/" },
   ];
 
   const [scrolled, setScrolled] = useState(false);
@@ -35,20 +31,23 @@ export function Navbar() {
     <header
       className={`
         fixed
-        top-0
-        z-50
-        w-full
-        transition-all
-        duration-300
+    top-0
+    left-0
+    right-0
+    z-50
+    px-4
+    pt-4
 
         ${
           scrolled
             ? `
-              border-b
-              border-white/10
-              bg-[#020817]/80
-              backdrop-blur-xl
-            `
+      rounded-full
+      border
+      border-white/10
+      bg-[#050816]/40
+      backdrop-blur-2xl
+      shadow-[0_0_30px_rgba(168,85,247,0.08)]
+    `
             : `
               bg-transparent
             `
@@ -56,22 +55,24 @@ export function Navbar() {
       `}
     >
       <div
-        className="
-          mx-auto
-          flex
-          h-[92px]
-          max-w-7xl
-          items-center
-          justify-between
-          px-6
-          md:px-10
-        "
+        className={`
+    mx-auto
+    flex
+    h-[84px]
+    max-w-6xl
+    items-center
+    justify-between
+    px-6
+    md:px-8
+
+    transition-all
+    duration-500
+
+   
+  `}
       >
         {/* LOGO */}
-        <Link
-          href="/"
-          className="flex items-center gap-3"
-        >
+        <Link href="/" className="flex items-center gap-3">
           {/* logo image */}
           <div className="relative h-16 w-16 overflow-hidden rounded-xl">
             <Image
@@ -85,21 +86,23 @@ export function Navbar() {
 
           {/* brand */}
           <div className="flex flex-col leading-none">
-            <span
-              className="
-                text-[24px]
-                tracking-tight
-                bg-gradient-to-r
-                from-[#bf4078]
-                via-[#A855F7]
-                to-[#60A5FA]
-                bg-clip-text
-                text-transparent
-                drop-shadow-[0_0_18px_rgba(168,85,247,0.35)]
-              "
-            >
-              A S TECH
-            </span>
+            <div className="flex flex-col leading-none">
+              <span
+                className="
+      text-[24px]
+      tracking-tight
+      bg-gradient-to-r
+      from-[#bf4078]
+      via-[#A855F7]
+      to-[#60A5FA]
+      bg-clip-text
+      text-transparent
+      drop-shadow-[0_0_18px_rgba(168,85,247,0.35)]
+    "
+              >
+                A S TECH
+              </span>
+            </div>
 
             <span
               className="
@@ -118,54 +121,87 @@ export function Navbar() {
         {/* DESKTOP MENU */}
         <nav
           className="
-            hidden
-            items-center
-            gap-10
-            lg:flex
-          "
+    hidden
+    items-center
+    gap-4
+    lg:flex
+  "
         >
-          {navLinks.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className="
-                text-sm
-                tracking-[0.2em]
-                text-white/75
-                transition-colors
-                duration-300
-                hover:text-white
-              "
-            >
-              {item.label}
-            </Link>
-          ))}
+          <div
+            className="
+      flex
+      items-center
+      gap-8
+      rounded-full
+      border
+      border-white/10
+      bg-white/[0.03]
+      px-8
+      py-3
+      backdrop-blur-md
+    "
+          >
+            {navLinks.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="
+  relative
+  text-sm
+  tracking-[0.2em]
+  text-white/65
+  transition-all
+  duration-300
 
+  after:absolute
+  after:left-0
+  after:-bottom-2
+  after:h-px
+  after:w-0
+  after:bg-gradient-to-r
+  after:from-[#8B5CF6]
+  after:to-[#38BDF8]
+  after:transition-all
+  after:duration-300
+
+  hover:text-white
+  hover:after:w-full
+"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
           {/* CTA */}
           <Button
             asChild
             className="
-              group
-              rounded-full
-              border
-              border-white/10
-              bg-white/[0.05]
-              px-6
-              py-6
-              text-white
-              backdrop-blur-md
-              transition-all
-              duration-300
-              hover:border-[#8B5CF6]/40
-              hover:bg-white/[0.08]
-            "
-          >
-            <Link
-              href="/contact"
-              className="flex items-center gap-2"
-            >
-              CONTACT
+  group
+  rounded-full
+  border
+  border-[#8B5CF6]/20
 
+  bg-gradient-to-r
+  from-[#8B5CF6]/10
+  via-[#C026D3]/10
+  to-[#38BDF8]/10
+
+  px-6
+  py-6
+
+  text-white
+
+  backdrop-blur-xl
+
+  transition-all
+  duration-300
+
+  hover:border-[#8B5CF6]/50
+  hover:shadow-[0_0_25px_rgba(168,85,247,0.2)]
+"
+          >
+            <Link href="/" className="flex items-center gap-2">
+              Lets Talk
               <ArrowUpRight
                 size={18}
                 className="
@@ -185,18 +221,31 @@ export function Navbar() {
             <SheetTrigger asChild>
               <button
                 className="
-                  flex
-                  h-12
-                  w-12
-                  items-center
-                  justify-center
-                  rounded-full
-                  border
-                  border-white/10
-                  bg-white/[0.04]
-                  text-white
-                  backdrop-blur-md
-                "
+  flex
+  h-14
+  w-14
+  items-center
+  justify-center
+
+  rounded-full
+
+  border
+  border-white/10
+
+  bg-gradient-to-br
+  from-[#8B5CF6]/20
+  via-[#C026D3]/10
+  to-[#38BDF8]/20
+
+  text-white
+
+  backdrop-blur-xl
+
+  transition-all
+  duration-300
+
+  hover:scale-105
+"
               >
                 <Menu size={24} />
               </button>
@@ -205,80 +254,207 @@ export function Navbar() {
             <SheetContent
               side="right"
               className="
-                border-l
-                border-white/10
-                bg-[#020817]/95
-                text-white
-                backdrop-blur-2xl
-              "
+    w-full
+    max-w-[420px]
+
+    border-l
+    border-white/10
+
+    bg-[linear-gradient(180deg,#020817_0%,#030B28_100%)]
+
+    text-white
+    backdrop-blur-2xl
+    p-0
+  "
             >
               {/* glow */}
               <div
                 className="
-                  pointer-events-none
-                  absolute
-                  inset-0
-                  bg-[radial-gradient(circle_at_top_right,rgba(139,92,246,0.18),transparent_45%)]
-                "
+      pointer-events-none
+      absolute
+      top-0
+      right-0
+      h-[350px]
+      w-[350px]
+      rounded-full
+      bg-[#8B5CF6]/20
+      blur-[120px]
+    "
               />
 
               <div
                 className="
-                  relative
-                  mt-20
-                  flex
-                  flex-col
-                  gap-8
-                "
+      relative
+      flex
+      h-full
+      flex-col
+      px-8
+      pt-20
+      pb-8
+    "
               >
-                {navLinks.map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
+                {/* Brand */}
+                <div className="mb-16">
+                  <h2
                     className="
-                      text-3xl
-                      font-extralight
-                      tracking-[-0.04em]
-                      text-white/85
-                      transition-colors
-                      duration-300
-                      hover:text-white
-                    "
+         text-3xl
+      tracking-tight
+      bg-gradient-to-r
+      from-[#bf4078]
+      via-[#A855F7]
+      to-[#60A5FA]
+      bg-clip-text
+      text-transparent
+      drop-shadow-[0_0_18px_rgba(168,85,247,0.35)]
+        "
                   >
-                    {item.label}
-                  </Link>
-                ))}
+                    A S TECH STUDIO
+                  </h2>
+                </div>
 
-                {/* mobile CTA */}
-                <Button
-                  asChild
-                  className="
-                    mt-6
-                    w-fit
-                    rounded-full
-                    border
-                    border-white/10
-                    bg-white/[0.05]
-                    px-6
-                    py-6
-                    text-white
-                    backdrop-blur-md
-                    hover:border-[#8B5CF6]/40
-                    hover:bg-white/[0.08]
-                  "
-                >
-                  <Link
-                    href="/contact"
-                    className="flex items-center gap-2"
+                {/* Nav Links */}
+                <div className="space-y-6">
+                  {navLinks.map((item, index) => (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      className="
+            group
+            flex
+            items-center
+            gap-5
+          "
+                    >
+                      <span
+                        className="
+              min-w-[30px]
+              text-sm
+              text-white/25
+            "
+                      >
+                        0{index + 1}
+                      </span>
+
+                      <span
+                        className="
+              text-2xl
+              font-extralight
+              tracking-[-0.05em]
+              text-white
+
+              transition-all
+              duration-300
+
+              group-hover:translate-x-3
+              group-hover:text-[#C084FC]
+            "
+                      >
+                        {item.label.charAt(0) +
+                          item.label.slice(1).toLowerCase()}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+
+                {/* Bottom */}
+                <div className="mt-auto">
+                  <div
+                    className="
+          mb-8
+          h-px
+          w-full
+          bg-gradient-to-r
+          from-[#8B5CF6]
+          via-[#C026D3]
+          to-transparent
+        "
+                  />
+
+                  <div
+                    className="
+          mb-6
+          flex
+          items-center
+          gap-2
+        "
                   >
-                    CONTACT
+                    <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
 
-                    <ArrowUpRight size={18} />
-                  </Link>
-                </Button>
+                    <span
+                      className="
+            text-xs
+            uppercase
+            tracking-[0.2em]
+            text-white/40
+          "
+                    >
+                      Available For Projects
+                    </span>
+                  </div>
+
+                  <Button
+                    asChild
+                    className="
+          h-14
+          w-full
+          rounded-full
+
+          bg-gradient-to-r
+          from-[#8B5CF6]
+          via-[#C026D3]
+          to-[#38BDF8]
+
+          text-white
+
+          hover:opacity-90
+        "
+                  >
+                    <Link href="/" className="flex items-center gap-2">
+                      Lets Talk
+                      <ArrowUpRight size={18} />
+                    </Link>
+                  </Button>
+
+                  <div
+                    className="
+          mt-8
+          flex
+          items-center
+          gap-6
+          text-sm
+          text-white/40
+        "
+                  >
+                    <Link href="#">LinkedIn</Link>
+                    <Link href="#">Instagram</Link>
+                  </div>
+                </div>
               </div>
             </SheetContent>
           </Sheet>
+        </div>
+
+        <div
+          className="
+    hidden
+    xl:flex
+    items-center
+    gap-2
+    ml-4
+  "
+        >
+          <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+
+          <span
+            className="
+      text-xs
+      uppercase
+      tracking-[0.2em]
+      text-white/40
+    "
+          >
+            Available for Projects
+          </span>
         </div>
       </div>
     </header>
