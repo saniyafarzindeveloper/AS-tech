@@ -16,7 +16,7 @@ const founders = [
       "System Design",
     ],
     qualification: "B.E. Information Technology",
-    experience: "3+ Years",
+    experience: "4+ Years",
     statement:
       "Passionate about building scalable web applications, SaaS products, modern user experiences and future-ready digital ecosystems.",
     linkedin: "https://www.linkedin.com/in/saniya-farzin/",
@@ -26,7 +26,7 @@ const founders = [
     initials: "IS",
     name: "Iftikhar Shaikh",
     role: "Business Development Manager",
-    domain: ["Construction", "Engineering", "Management", "Finance"],
+    domain: [ "Management", "Finance"],
     qualification: "MTech, MBA",
     experience: "7+ Years",
     statement:
