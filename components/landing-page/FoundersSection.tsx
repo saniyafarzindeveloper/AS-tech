@@ -16,23 +16,23 @@ const founders = [
       "System Design",
     ],
     qualification: "B.E. Information Technology",
-    experience: "4+ Years",
+    experience: "3+ Years",
     statement:
       "Passionate about building scalable web applications, SaaS products, modern user experiences and future-ready digital ecosystems.",
     linkedin: "https://www.linkedin.com/in/saniya-farzin/",
     cardUrl: "https://blinq.me/cmp9isqvf01ip0bs636yz7rsr?bs=db",
   },
   {
-    initials: "IS",
-    name: "Iftikhar Shaikh",
+    initials: "AA",
+    name: "Aves Ahmed",
     role: "Business Development Manager",
-    domain: [ "Management", "Finance"],
+    domain: [ "Management", "Finance", "Leadership", "Business growth"],
     qualification: "MTech, MBA",
     experience: "7+ Years",
     statement:
       "Focused on client success, partnerships, business growth and transforming ideas into sustainable digital ventures.",
-    linkedin: "",
-    cardUrl: "",
+    linkedin: "https://www.linkedin.com/in/aves-shaikh-project-management/",
+    cardUrl: "https://blinq.me/STao0bTfXfbL?bs=db",
   },
 ];
 

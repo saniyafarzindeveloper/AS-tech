@@ -12,14 +12,15 @@ const projects = [
     id: 1,
     title: "Interior Design Studio Website",
     category: "Interior Design",
+
     description:
       "Designed and developed a premium digital experience for an interior design studio focused on luxury residential and commercial spaces.",
 
-    image: "/suvidha1.png",
-
-    industry: "Interior Design",
-    timeline: "2 Weeks",
-    role: "Design & Development",
+    images: [
+      "/suvidha1.png",
+      "/suvidha1.png",
+      "/suvidha1.png",
+    ],
 
     liveUrl: "https://...",
     caseStudyUrl: "/projects/interior-design",
