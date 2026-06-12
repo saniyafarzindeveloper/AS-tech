@@ -18,11 +18,11 @@ const projects = [
 
     images: [
       "/suvidha1.png",
-      "/suvidha1.png",
-      "/suvidha1.png",
+      "/suvidha2.png",
+      "/suvidha3.png",
     ],
 
-    liveUrl: "https://...",
+    liveUrl: "https://www.suvidhaenterprises.in/",
     caseStudyUrl: "/projects/interior-design",
 
     services: [
@@ -36,6 +36,7 @@ const projects = [
       "Tailwind CSS",
       "Framer Motion",
     ],
+    timeline: "2 weeks"
   },
 ];
 

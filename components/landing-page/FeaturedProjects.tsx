@@ -8,7 +8,7 @@ export default function FeaturedProjects({
 }) {
   return (
     <section className="relative overflow-hidden bg-[#020817] py-32">
-      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-20">
+      <div className="relative z-10 mx-auto px-6 md:px-12 lg:px-20">
         <div>
           <p className="text-sm uppercase tracking-[0.3em] text-[#8B5CF6]">
             Featured Case Study
