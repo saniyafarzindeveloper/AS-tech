@@ -44,13 +44,13 @@ export default function Home() {
   return (
     
     <div className="">
-      <Hero />
+      {/* <Hero />
       <AboutSection />
       <ListOfServices />
       <Services />
       <FeaturedProject projects={projects} />
       <FoundersSection />
-      <ContactForm />
+      <ContactForm /> */}
     </div>
   );
 }

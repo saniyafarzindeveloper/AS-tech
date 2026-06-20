@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Navbar } from "@/components/Navbar";
+import Closed from "@/components/landing-page/Closed";
 
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
@@ -28,9 +29,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("font-sans", geist.variable)}>
       <body>
-      <Navbar />
+        <Closed />
+      {/* <Navbar /> */}
         {children}
-        <Footer />
+        {/* <Footer /> */}
         </body>
     </html>
   );
